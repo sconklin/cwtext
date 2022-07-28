@@ -1,6 +1,6 @@
-CWTEXT 0.96 README
+CWTEXT 0.96-sconklin README
 
-This is cwtext version 0.96. The software converts plain ASCII to 
+This is cwtext version 0.96, as updated by Steve Conklin. The software converts plain ASCII to 
 International Morse Code. This release includes three programs,
 
 cwtext: convert text to 'dotscii' - . -..- -
