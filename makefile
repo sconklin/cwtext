@@ -11,7 +11,7 @@ cwmm: cwmm.o morse.o
 	${CC} ${CFLAGS} -o cwmm $^
 
 cwpcm: cwpcm.o morse.o pcm.o
-	${CC} ${CFLAGS} -o cwpcm -lm $^
+	${CC} ${CFLAGS} -o cwpcm  $^ -lm
 
 cwtext: cwtext.o morse.o
 	${CC} ${CFLAGS} -o cwtext  $^
