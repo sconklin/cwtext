@@ -41,9 +41,6 @@ morse={'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..',
 '.':'.-.-.-', ',':'--..--', ':':'---...', '?':'..--..', '-':'-....-',
 '/':'-..-.', '=':'.-.-.', '@': '...-.-', '!':'...-.-', ' ':' '}
 
-from string import lower
-from string import find
-
 # generate the header file cw.h
 # I hand optimized the crypt string through several iterations
 # so that all offsets would fit in 5 bits. There may be a more
@@ -53,22 +50,22 @@ def mkcw_h():
  plain='.,:?-/=@!0123456789abcdefghijklmnopqrstuvwxyz'
  code=''
  for n in plain:
-  slot = find(crypt, morse[n])
+  slot = crypt.find(morse[n])
   if slot > 31:
-   print "/* %s out of bounds (%d). Must be <= 31 */"
+   print ("/* %s out of bounds (%d). Must be <= 31 */")
   if slot >= 0:
    plen=slot+(len(morse[n])<<5)
    code=code+"\\x"+hex(plen)[2:] 
   else:
    crypt = crypt + morse[n]
-   print n, hex(find(crypt, morse[n])), len(morse[n]), hex(len(morse[n]))
- print "/* International Morse Code */"
- print "#define CWSTARTMASK (0x1f)"
- print "#define CWSIZEMASK (0x07)"
- print "#define CWSIZESHIFT (0x05)"
- print "char *crypt=\"%s\";" % crypt
- print "char *plain=\"%s\";" % plain
- print "char *code=\"%s\";" % code
+   print (n, hex(crypt.find(morse[n])), len(morse[n]), hex(len(morse[n])))
+ print ("/* International Morse Code */")
+ print ("#define CWSTARTMASK (0x1f)")
+ print ("#define CWSIZEMASK (0x07)")
+ print ("#define CWSIZESHIFT (0x05)")
+ print ("char *crypt=\"%s\";" % crypt)
+ print ("char *plain=\"%s\";" % plain)
+ print ("char *code=\"%s\";" % code)
 
 if __name__ == '__main__':
  mkcw_h()

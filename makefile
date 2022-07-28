@@ -9,7 +9,7 @@ install: ALL
 
 cwmm: cwmm.o morse.o
 	${CC} ${CFLAGS} -o cwmm $^
-	
+
 cwpcm: cwpcm.o morse.o pcm.o
 	${CC} ${CFLAGS} -o cwpcm -lm $^
 
@@ -35,7 +35,7 @@ testpcm.o: testpcm.c pcm.c pcm.h
 	${CC} ${CFLAGS} -c testpcm.c
 
 cw.h: gencw.py
-	python gencw.py > cw.h
+	python3 gencw.py > cw.h
 
 test.wav: cwpcm
 	echo 123test | ./cwpcm | sox -r 8000 -bu -t raw - test.wav
